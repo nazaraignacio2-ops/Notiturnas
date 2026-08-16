@@ -4,7 +4,7 @@ let canal = 0;
 let osdTimer = 0;
 let volumenTimer = 0;
 
-let volumen = 0.6;
+let volumen = 0;
 
 let nombresVideos = [
   "ssalud.mp4",
