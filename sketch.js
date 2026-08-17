@@ -264,7 +264,7 @@ function dibujarCanal() {
 
 function dibujarVolumen() {
 
-  fill(0, 0, 0, 170);
+  fill(0, 0, 0, 171);
 
   noStroke();
 
