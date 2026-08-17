@@ -69,19 +69,18 @@ function draw() {
 
 function keyPressed() {
 
-  // No permite cambiar de canal durante el cooldown
-  if (autoTimer > 0) {
-    return;
-  }
-
   // ARRIBA = canal anterior
   if (keyCode === UP_ARROW) {
-    cambiarCanal(-1);
+    if (autoTimer <= 0) {
+      cambiarCanal(-1);
+    }
   }
 
   // ABAJO = canal siguiente
   if (keyCode === DOWN_ARROW) {
-    cambiarCanal(1);
+    if (autoTimer <= 0) {
+      cambiarCanal(1);
+    }
   }
 
   // DERECHA = subir volumen
