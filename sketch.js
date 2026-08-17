@@ -56,7 +56,6 @@ function draw() {
   // Temporizador de cambio automático
   if (autoTimer > 0) {
     autoTimer--; // El cambio automático reinicia el timer adentro de la función
-  }
 
   // Barra de progreso del temporizador automático
   fill(0, 0, 0, 170);
