@@ -17,7 +17,7 @@ let fuente;
 
 function preLoad() {
   fuente = loadFont("VCR_OSD_MONO_1.001.ttf")
-
+}
 
 function setup() {
 
@@ -30,7 +30,7 @@ function setup() {
   document.body.style.overflow = "hidden";
 
   background(0);
-  textFont("fuente");
+  textFont(fuente);
 
 
   // Crear los videos //
