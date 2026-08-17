@@ -54,33 +54,28 @@ function draw() {
   }
 
   // Temporizador de cambio automático
-if (autoTimer <= 0) {
-  autoTimer--;// El cambio automático reinicia el timer adentro de la función
+  autoTimer--;
+  if (autoTimer <= 0) {
+    cambiarCanal(1); // El cambio automático reinicia el timer adentro de la función
   }
 
   // Barra de progreso del temporizador automático
-if (autoTimer > 0) {
   fill(0, 0, 0, 170);
   noStroke();
   rect(20, height - 20, 220, 10, 4);
-
   fill(255);
   rect(20, height - 20, map(autoTimer, 0, 300, 0, 220), 10, 4);
 }
-function keyPressed() {
 
+function keyPressed() {
   // ARRIBA = canal anterior
   if (keyCode === UP_ARROW) {
-    if (autoTimer <= 0) {
-      cambiarCanal(-1);
-    }
+    cambiarCanal(-1);
   }
 
   // ABAJO = canal siguiente
   if (keyCode === DOWN_ARROW) {
-    if (autoTimer <= 0) {
-      cambiarCanal(1);
-    }
+    cambiarCanal(1);
   }
 
   // DERECHA = subir volumen
