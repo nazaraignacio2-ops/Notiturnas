@@ -16,10 +16,10 @@ let autoTimer = 300; // 5 segundos a 60 FPS
 
 function setup() {
 
-  // Canvas del tamaño de la ventana //
+  // Canvas del tamaño de la ventana 1280x960 quedo ese el mejor (wndws) //
   createCanvas(windowWidth, windowHeight);
 
-  // Evitar márgenes y scroll de la página //
+  // Evitar márgenes y el coso de scroll //
   document.body.style.margin = "0";
   document.body.style.padding = "0";
   document.body.style.overflow = "hidden";
@@ -264,7 +264,7 @@ function dibujarVolumen() {
   noStroke();
 
   rect(
-    650,
+    550,
     height - 75,
     270,
     55,
@@ -280,7 +280,7 @@ function dibujarVolumen() {
 
   text(
     "Volumen " + int(volumen * 100),
-    750,
+    650,
     height - 65
   );
 
@@ -290,7 +290,7 @@ function dibujarVolumen() {
   fill(80);
 
   rect(
-    675,
+    575,
     height - 38,
     220,
     16,
@@ -303,7 +303,7 @@ function dibujarVolumen() {
   fill(255);
 
   rect(
-    675,
+    575,
     height - 38,
     volumen * 220,
     16
