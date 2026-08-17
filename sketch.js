@@ -16,7 +16,7 @@ let autoTimer = 300; // 5 segundos a 60 FPS
 let fuente;
 
 function preLoad() {
-  fuente = loadFont("
+  fuente = loadFont("VCR_OSD_MONO_1.001.ttf")
 
 
 function setup() {
@@ -30,7 +30,7 @@ function setup() {
   document.body.style.overflow = "hidden";
 
   background(0);
-  textFont("vcr_osd_mono");
+  textFont("fuente");
 
 
   // Crear los videos //
