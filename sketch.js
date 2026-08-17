@@ -7,8 +7,8 @@ let volumenTimer = 0;
 let volumen = 0;
 
 let nombresVideos = [
-  "ssalud.mp4",
-  "ttrabajo.mp4",
+  "video.mp4",
+  "vvideo.mp4",
 ];
 let autoTimer = 300; // 5 segundos a 60fps
 
@@ -69,18 +69,19 @@ function draw() {
 
 function keyPressed() {
 
+  // No permite cambiar de canal durante el cooldown
+  if (autoTimer > 0) {
+    return;
+  }
+
   // ARRIBA = canal anterior
   if (keyCode === UP_ARROW) {
-    if (autoTimer <= 0) {
-      cambiarCanal(-1);
-    }
+    cambiarCanal(-1);
   }
 
   // ABAJO = canal siguiente
   if (keyCode === DOWN_ARROW) {
-    if (autoTimer <= 0) {
-      cambiarCanal(1);
-    }
+    cambiarCanal(1);
   }
 
   // DERECHA = subir volumen
