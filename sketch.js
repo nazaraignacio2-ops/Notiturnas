@@ -13,6 +13,11 @@ let nombresVideos = [
 
 let autoTimer = 300; // 5 segundos a 60 FPS
 
+let fuente;
+
+function preLoad() {
+  fuente = loadFont("
+
 
 function setup() {
 
@@ -25,7 +30,7 @@ function setup() {
   document.body.style.overflow = "hidden";
 
   background(0);
-  textFont("monospace");
+  textFont("vcr_osd_mono");
 
 
   // Crear los videos //
