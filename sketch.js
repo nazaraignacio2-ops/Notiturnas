@@ -16,7 +16,7 @@ let autoTimer = 300; // 5 segundos a 60 FPS
 let fuente;
 
 function preload() {
-  fuente = loadFont("VCR_OSD_MONO_1.001.ttf")
+  fuente = loadFont("vcrmono.ttf")
 }
 
 function setup() {
