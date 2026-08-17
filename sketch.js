@@ -324,4 +324,4 @@ function windowResized() {
     windowWidth,
     windowHeight
   );
-}
+}}
