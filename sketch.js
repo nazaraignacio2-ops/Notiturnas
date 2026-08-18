@@ -285,7 +285,7 @@ function dibujarVolumen() {
 
   text(
     "Volumen " + int(volumen * 100),
-    650,
+    550,
     height - 65
   );
 
