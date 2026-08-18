@@ -269,7 +269,7 @@ function dibujarVolumen() {
   noStroke();
 
   rect(
-    550,
+    450,
     height - 75,
     270,
     55,
@@ -295,7 +295,7 @@ function dibujarVolumen() {
   fill(80);
 
   rect(
-    575,
+    475,
     height - 38,
     220,
     16,
@@ -308,7 +308,7 @@ function dibujarVolumen() {
   fill(255);
 
   rect(
-    575,
+    475,
     height - 38,
     volumen * 220,
     16
