@@ -123,18 +123,7 @@ function keyPressed() {
   // ARRIBA = canal anterior //
   // Solo funciona cuando termina el cooldown //
 
-  if (keyCode === UP_ARROW) {
-
-    if (autoTimer <= 0) {
-      cambiarCanal(-1);
-    }
-  }
-
-
-  // ABAJO = canal siguiente //
-  // Solo funciona cuando termina el cooldown //
-
-  if (keyCode === DOWN_ARROW) {
+  if (keyCode === RIGHT_ARROW) {
 
     if (autoTimer <= 0) {
       cambiarCanal(1);
@@ -142,9 +131,20 @@ function keyPressed() {
   }
 
 
+  // ABAJO = canal siguiente //
+  // Solo funciona cuando termina el cooldown //
+
+  if (keyCode === LEFT_ARROW) {
+
+    if (autoTimer <= 0) {
+      cambiarCanal(-1);
+    }
+  }
+
+
   // DERECHA = subir volumen //
 
-  if (keyCode === RIGHT_ARROW) {
+  if (keyCode === UP_ARROW) {
 
     volumen = min(volumen + 0.1, 1);
 
@@ -156,7 +156,7 @@ function keyPressed() {
 
   // IZQUIERDA = bajar volumen //
 
-  if (keyCode === LEFT_ARROW) {
+  if (keyCode === DOWN_ARROW) {
 
     volumen = max(volumen - 0.1, 0);
 
