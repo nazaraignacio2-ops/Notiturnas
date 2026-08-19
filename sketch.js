@@ -8,7 +8,8 @@ let volumen = 0;
 
 let nombresVideos = [
   "ssalud.mp4",
-  "ttrabajo.mp4",
+  "trabajofinal.mp4",
+  "educacion.mp4",
 ];
 
 let autoTimer = 300; // 5 segundos a 60 FPS
