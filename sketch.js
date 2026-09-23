@@ -297,7 +297,7 @@ function dibujarVolumen() {
 
   rect(
     475,
-    height 77,
+    height 80,
     220,
     16,
     4
