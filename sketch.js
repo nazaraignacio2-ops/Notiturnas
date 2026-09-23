@@ -271,7 +271,7 @@ function dibujarVolumen() {
 
   rect(
     450,
-    height 100,
+    height - 75,
     270,
     55,
     8
@@ -287,7 +287,7 @@ function dibujarVolumen() {
   text(
     "Volumen " + int(volumen * 100),
     550,
-    height 110
+    height - 65
   );
 
 
@@ -297,7 +297,7 @@ function dibujarVolumen() {
 
   rect(
     475,
-    height 80,
+    height - 38,
     220,
     16,
     4
@@ -310,7 +310,7 @@ function dibujarVolumen() {
 
   rect(
     475,
-    height 77,
+    height - 38,
     volumen * 220,
     16
   );
