@@ -8,9 +8,9 @@ let volumen = 0;
 
 let nombresVideos = [
   "transporte.mp4",
+  "eeducaciónfinal.mp4",
   "ssalud.mp4",
-  "trabajo.mp4",
-  "eeducacionfinal.mp4",
+  "trabajoo.mp4",
 ];
 
 let autoTimer = 300; // 5 segundos a 60 FPS
@@ -51,7 +51,7 @@ function setup() {
   // Arranca el primer canal //
   videos[canal].loop();
 
-  osdTimer = 120;
+  osdTimer = 240;
 }
 
 
@@ -96,7 +96,7 @@ function draw() {
 
     rect(
       20,
-      height - 20,
+      height - 50,
       220,
       10,
       4
@@ -107,7 +107,7 @@ function draw() {
 
     rect(
       20,
-      height - 20,
+      height - 50,
       map(autoTimer, 0, 300, 0, 220),
       10,
       4
@@ -151,7 +151,7 @@ function keyPressed() {
 
     actualizarVolumen();
 
-    volumenTimer = 120;
+    volumenTimer = 240;
   }
 
 
@@ -163,7 +163,7 @@ function keyPressed() {
 
     actualizarVolumen();
 
-    volumenTimer = 120;
+    volumenTimer = 240;
   }
 }
 
@@ -211,7 +211,7 @@ function cambiarCanal(direccion) {
 
   // Mostrar cartel del canal //
 
-  osdTimer = 120;
+  osdTimer = 240;
 
 
   // Reiniciar cooldown
@@ -240,8 +240,8 @@ function dibujarCanal() {
   noStroke();
 
   rect(
-    20,
-    20,
+    110,
+    90,
     210,
     65,
     8
@@ -256,8 +256,8 @@ function dibujarCanal() {
 
   text(
     "Canal " + (canal + 1),
-    35,
-    35
+    135,
+    105
   );
 }
 
@@ -271,10 +271,10 @@ function dibujarVolumen() {
   noStroke();
 
   rect(
-    450,
-    height - 75,
+    910,
+    height - 785,
     270,
-    55,
+    65,
     8
   );
 
@@ -287,8 +287,8 @@ function dibujarVolumen() {
 
   text(
     "Volumen " + int(volumen * 100),
-    550,
-    height - 65
+    1000,
+    height - 775,
   );
 
 
@@ -297,8 +297,8 @@ function dibujarVolumen() {
   fill(80);
 
   rect(
-    475,
-    height - 38,
+    935,
+    height - 750,
     220,
     16,
     4
@@ -310,8 +310,8 @@ function dibujarVolumen() {
   fill(255);
 
   rect(
-    475,
-    height - 38,
+    935,
+    height - 750,
     volumen * 220,
     16
   );
