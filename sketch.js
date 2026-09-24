@@ -7,8 +7,9 @@ let volumenTimer = 0;
 let volumen = 0;
 
 let nombresVideos = [
+  "transporte.mp4"
   "ssalud.mp4",
-  "trabajofinal.mp4",
+  "trabajo.mp4",
   "eeducacionfinal.mp4",
 ];
 
