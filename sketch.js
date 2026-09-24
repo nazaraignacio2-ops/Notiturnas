@@ -9,7 +9,7 @@ let volumen = 0;
 let nombresVideos = [
   "transporte.mp4",
   "animales.mp4",
-  "eeducaciónfinal.mp4",
+  "eeducacionfinal.mp4",
   "ssalud.mp4",
   "trabajoo.mp4",
 ];
