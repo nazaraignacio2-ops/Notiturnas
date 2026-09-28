@@ -87,7 +87,7 @@ function draw() {
     autoTimer--;
   }
 
-  
+ 
   // Barra de Cooldown //
 
   if (autoTimer > 0) {
@@ -96,8 +96,8 @@ function draw() {
     noStroke();
 
     rect(
-      20,
-      height - 50,
+      50,
+      height - 100,
       220,
       10,
       4
@@ -107,8 +107,8 @@ function draw() {
     fill(255);
 
     rect(
-      20,
-      height - 50,
+      50,
+      height - 100,
       map(autoTimer, 0, 300, 0, 220),
       10,
       4
@@ -194,7 +194,7 @@ function cambiarCanal(direccion) {
   }
 
 
-  // Si supera el último 
+  // Si supera el último
   // vuelve al primero //
 
   if (canal >= videos.length) {
@@ -273,7 +273,7 @@ function dibujarVolumen() {
 
   rect(
     910,
-    height - 785,
+    height - 875,
     270,
     65,
     8
@@ -289,7 +289,7 @@ function dibujarVolumen() {
   text(
     "Volumen " + int(volumen * 100),
     1000,
-    height - 775,
+    height - 865,
   );
 
 
@@ -299,7 +299,7 @@ function dibujarVolumen() {
 
   rect(
     935,
-    height - 750,
+    height - 835,
     220,
     16,
     4
@@ -312,7 +312,7 @@ function dibujarVolumen() {
 
   rect(
     935,
-    height - 750,
+    height - 835,
     volumen * 220,
     16
   );
