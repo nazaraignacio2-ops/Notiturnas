@@ -96,8 +96,8 @@ function draw() {
     noStroke();
 
     rect(
-      50,
-      height - 100,
+      550,
+      height - 835,
       220,
       10,
       4
@@ -107,8 +107,8 @@ function draw() {
     fill(255);
 
     rect(
-      50,
-      height - 100,
+      550,
+      height - 835,
       map(autoTimer, 0, 300, 0, 220),
       10,
       4
