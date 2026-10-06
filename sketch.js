@@ -96,8 +96,20 @@ function draw() {
     noStroke();
 
     rect(
-      550,
-      height - 835,
+      490,
+      height - 855,
+      260,
+      40,
+      8
+    );
+
+    
+       fill(0);
+    noStroke();
+
+    rect(
+      505,
+      height - 840,
       220,
       10,
       4
@@ -107,8 +119,8 @@ function draw() {
     fill(255);
 
     rect(
-      550,
-      height - 835,
+      505,
+      height - 840,
       map(autoTimer, 0, 300, 0, 220),
       10,
       4
@@ -273,7 +285,7 @@ function dibujarVolumen() {
 
   rect(
     910,
-    height - 875,
+    height - 870,
     270,
     65,
     8
@@ -289,7 +301,7 @@ function dibujarVolumen() {
   text(
     "Volumen " + int(volumen * 100),
     1000,
-    height - 865,
+    height - 860,
   );
 
 
@@ -299,7 +311,7 @@ function dibujarVolumen() {
 
   rect(
     935,
-    height - 835,
+    height - 830,
     220,
     16,
     4
@@ -312,7 +324,7 @@ function dibujarVolumen() {
 
   rect(
     935,
-    height - 835,
+    height - 830,
     volumen * 220,
     16
   );
