@@ -4,7 +4,7 @@ let canal = 0;
 let osdTimer = 0;
 let volumenTimer = 0;
 
-let volumen = 0;
+let volumen = 0.5;
 
 // modo standby HACER EL MP4 CARTEL //
 let modoStandby = true;
