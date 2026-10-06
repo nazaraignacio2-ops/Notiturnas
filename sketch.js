@@ -6,6 +6,10 @@ let volumenTimer = 0;
 
 let volumen = 0;
 
+// modo standby HACER EL MP4 CARTEL //
+let modoStandby = true;
+let standby;
+
 let nombresVideos = [
   "transporte.mp4",
   "animales.mp4",
@@ -19,7 +23,7 @@ let autoTimer = 300; // 5 segundos a 60 FPS
 let fuente;
 
 function preload() {
-  fuente = loadFont("vcrmono.ttf")
+  fuente = loadFont("vcrmono.ttf");
 }
 
 function setup() {
@@ -36,23 +40,35 @@ function setup() {
   textFont(fuente);
 
 
+  // Crear video standby //
+
+  standby = createVideo("standby.mp4");
+
+  standby.hide();
+  standby.volume(0);
+  standby.loop();
+
+
   // Crear los videos //
+
   for (let i = 0; i < nombresVideos.length; i++) {
 
     let v = createVideo(nombresVideos[i]);
 
     v.hide();
     v.volume(volumen);
+
+    // Los videos empiezan pausados y no se ponen en loop //
     v.pause();
 
     videos.push(v);
+    configurarFinVideo(v);
   }
 
+  
+  // Los canales no arrancan porque la TV esta en standby //
 
-  // Arranca el primer canal //
-  videos[canal].loop();
-
-  osdTimer = 240;
+  osdTimer = 0;
 }
 
 
@@ -61,13 +77,31 @@ function draw() {
   background(0);
 
 
+  // pa q no se vean los overlays //
+
+  if (modoStandby) {
+
+    image(
+      standby,
+      0,
+      0,
+      width,
+      height
+    );
+
+    return;
+  }
+
+
   // Mostrar video actual //
+
   if (videos.length > 0) {
     image(videos[canal], 0, 0, width, height);
   }
 
 
   // Cartel del canal //
+
   if (osdTimer > 0) {
     dibujarCanal();
     osdTimer--;
@@ -75,6 +109,7 @@ function draw() {
 
 
   // Barra de volumen //
+
   if (volumenTimer > 0) {
     dibujarVolumen();
     volumenTimer--;
@@ -87,7 +122,7 @@ function draw() {
     autoTimer--;
   }
 
- 
+
   // Barra de Cooldown //
 
   if (autoTimer > 0) {
@@ -103,8 +138,8 @@ function draw() {
       8
     );
 
-    
-       fill(0);
+
+    fill(0);
     noStroke();
 
     rect(
@@ -129,9 +164,36 @@ function draw() {
 }
 
 
-// Teclado // aHOla
+// Teclado //
 
 function keyPressed() {
+
+
+  // encender tv en modosatandby espacio p arrancar modo canales //
+
+  if (modoStandby && key === " ") {
+
+    modoStandby = false;
+
+    standby.pause();
+
+
+    // el primer canal arranca desde 0 //
+    videos[canal].time(0);
+
+    videos[canal].play();
+
+    osdTimer = 240;
+
+    return;
+  }
+
+
+  // Mientras está en standby, ignorar las flechitas de volumen y canal//
+
+  if (modoStandby) {
+    return;
+  }
 
 
   // ARRIBA = canal anterior //
@@ -186,10 +248,11 @@ function keyPressed() {
 function cambiarCanal(direccion) {
 
 
-  // Pausar el video actual //
+  // Pausar y resetear a 0 el video actual //
 
   if (videos[canal]) {
     videos[canal].pause();
+    videos[canal].time(0);
   }
 
 
@@ -207,19 +270,22 @@ function cambiarCanal(direccion) {
 
 
   // Si supera el último
-  // vuelve al primero //
+  // vuelve al primero el de mati//
 
   if (canal >= videos.length) {
     canal = 0;
   }
 
 
-  // Aplicar volumen
-  // y reproducir nuevo canal //
+  // Aplicar volumen //
 
   videos[canal].volume(volumen);
 
-  videos[canal].loop();
+
+  // El nuevo canal siempre empieza desde 0 //
+
+  videos[canal].time(0);
+  videos[canal].play();
 
 
   // Mostrar cartel del canal //
@@ -234,7 +300,55 @@ function cambiarCanal(direccion) {
 }
 
 
-// Actualiz. vOlumen //
+// pasar automáticamente a la siguiente noticia cdo termina la actual //
+
+function videoTerminado() {
+
+  // Resetear el video que terminó a 0 //
+
+  videos[canal].time(0);
+
+
+  // Cambiar automáticamente al siguiente canal //
+
+  canal++;
+
+  if (canal >= videos.length) {
+    canal = 0;
+  }
+
+
+  // Aplicar volumen al nuevo canal //
+
+  videos[canal].volume(volumen);
+
+
+  // Empezar el nuevo video desde 0 //
+
+  videos[canal].time(0);
+  videos[canal].play();
+
+
+  // Mostrar cartel del nuevo canal //
+
+  osdTimer = 240;
+
+
+  // Reiniciar cooldown //
+
+  autoTimer = 300;
+}
+
+
+// detectar cuándo termina cada MP4 //
+
+function configurarFinVideo(video) {
+
+  video.elt.addEventListener("ended", videoTerminado);
+}
+
+
+// Actualiz. volumen //
 
 function actualizarVolumen() {
 
@@ -275,7 +389,7 @@ function dibujarCanal() {
 }
 
 
-// Barra de volumrn //
+// Barra de volumen //
 
 function dibujarVolumen() {
 
@@ -331,7 +445,7 @@ function dibujarVolumen() {
 }
 
 
-// tamaño ventana //
+// Tamaño ventana //
 
 function windowResized() {
 
