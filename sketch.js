@@ -13,9 +13,12 @@ let standby;
 let nombresVideos = [
   "transporte.mp4",
   "animales.mp4",
-  "eeducacionfinal.mp4",
-  "ssalud.mp4",
-  "trabajoo.mp4",
+  "educacion.mp4",
+  "salud.mp4",
+  "trabajo.mp4",
+  "cocina.mp4",
+  "lectura.mp4",
+  "tecnologia.mp4",
 ];
 
 let autoTimer = 300; // 5 segundos a 60 FPS
