@@ -88,6 +88,7 @@ function setup() {
     esperarFinal = true;
     esperarFinalTimer = 0;
 }
+}
 
 
 function draw() {
