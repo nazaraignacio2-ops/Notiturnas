@@ -5,7 +5,7 @@ let canal = 0;
 let osdTimer = 0;
 let volumenTimer = 0;
 
-let volumen = 0.5;
+let volumen = 1;
 
 // MODO STANDBY
 let modoStandby = true;
