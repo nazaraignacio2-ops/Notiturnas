@@ -1,3 +1,4 @@
+
 let videos = [];
 let canal = 0;
 
@@ -9,6 +10,12 @@ let volumen = 0.5;
 // MODO STANDBY
 let modoStandby = true;
 let standby;
+
+// NUEVO: INTRODUCCIÓN
+let intro;
+let esperandoIntro = false;
+let introIniciada = false;
+let introTimer = 0;
 
 let nombresVideos = [
   "transporte.mp4",
@@ -50,6 +57,13 @@ function setup() {
   standby.loop();
   standby.play();
 
+  // NUEVO: Crear audio de introducción
+  intro = createAudio("introduccion.mp3");
+  intro.volume(1);
+
+  // NUEVO: Detectar cuando termina el MP3
+  intro.elt.addEventListener("ended", finalizarIntro);
+
   // Crear los videos de los canales
   for (let i = 0; i < nombresVideos.length; i++) {
 
@@ -77,6 +91,7 @@ function draw() {
   // MODO STANDBY
   if (modoStandby) {
 
+    // Mantener standby visible durante toda la introducción
     image(
       standby,
       0,
@@ -84,6 +99,18 @@ function draw() {
       width,
       height
     );
+
+    // NUEVO: Esperar 3 segundos antes del MP3
+    if (esperandoIntro && !introIniciada) {
+
+      introTimer++;
+
+      if (introTimer >= 180) {
+
+        introIniciada = true;
+        intro.play();
+      }
+    }
 
     return;
   }
@@ -151,18 +178,14 @@ function draw() {
 // TECLADO
 function keyPressed() {
 
-  // SPACE: salir del standby y encender TV
+  // NUEVO: SPACE inicia la secuencia de introducción
   if (modoStandby && key === " ") {
 
-    modoStandby = false;
+    if (!esperandoIntro) {
 
-    standby.pause();
-
-    // Arrancar primer canal
-    videos[canal].time(0);
-    videos[canal].play();
-
-    osdTimer = 240;
+      esperandoIntro = true;
+      introTimer = 0;
+    }
 
     return;
   }
@@ -207,6 +230,22 @@ function keyPressed() {
 
     volumenTimer = 240;
   }
+}
+
+
+// NUEVO: FINALIZAR INTRODUCCIÓN
+function finalizarIntro() {
+
+  modoStandby = false;
+
+  standby.pause();
+
+  // Arrancar primer canal
+  videos[canal].time(0);
+  videos[canal].play();
+
+  osdTimer = 240;
+  autoTimer = 300;
 }
 
 
