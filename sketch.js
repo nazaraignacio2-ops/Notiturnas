@@ -11,11 +11,13 @@ let volumen = 0.5;
 let modoStandby = true;
 let standby;
 
-// NUEVO: INTRODUCCIÓN
+// intro
 let intro;
 let esperandoIntro = false;
 let introIniciada = false;
 let introTimer = 0;
+let esperarFinal = false;
+let esperarFinalTimer = 0;
 
 let nombresVideos = [
   "transporte.mp4",
@@ -57,11 +59,11 @@ function setup() {
   standby.loop();
   standby.play();
 
-  // NUEVO: Crear audio de introducción
+  // crear audio de introducción
   intro = createAudio("introduccion.mp3");
   intro.volume(1);
 
-  // NUEVO: Detectar cuando termina el MP3
+  // detectar cuando termina el MP3
   intro.elt.addEventListener("ended", finalizarIntro);
 
   // Crear los videos de los canales
@@ -81,6 +83,10 @@ function setup() {
 
   // Los canales no arrancan hasta salir del standby
   osdTimer = 0;
+
+  function iniciarEsperarFinal(){
+    esperarFinal = true;
+    esperarFinalTimer = 0;
 }
 
 
@@ -100,7 +106,7 @@ function draw() {
       height
     );
 
-    // NUEVO: Esperar 3 segundos antes del MP3
+    // esperar 3 segundos antes del MP3
     if (esperandoIntro && !introIniciada) {
 
       introTimer++;
@@ -109,6 +115,13 @@ function draw() {
 
         introIniciada = true;
         intro.play();
+      }
+    }
+
+    if (esperarFinal){
+      esperarFinalTimer++;
+      if (esperarFinalTimer >=120){
+        finalizarIntro();
       }
     }
 
@@ -178,7 +191,7 @@ function draw() {
 // TECLADO
 function keyPressed() {
 
-  // NUEVO: SPACE inicia la secuencia de introducción
+  // SPACE inicia la secuencia de introducción
   if (modoStandby && key === " ") {
 
     if (!esperandoIntro) {
@@ -233,7 +246,7 @@ function keyPressed() {
 }
 
 
-// NUEVO: FINALIZAR INTRODUCCIÓN
+// FINALIZAR INTRODUCCIÓN
 function finalizarIntro() {
 
   modoStandby = false;
